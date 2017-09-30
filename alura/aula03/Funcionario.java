@@ -22,7 +22,7 @@ class Funcionario {
 		Funcionario funcionario01 = new Funcionario();
 		funcionario01.dataDeEntrada = new Data();
 
-		funcionario01.dataDeEntrada.preencheData(10, 5, 2017);
+		//funcionario01.dataDeEntrada.preencheData(10, 5, 2017);
 
 		funcionario01.salario = 10000.0;
 		funcionario01.recebeAumento(5000.0);
