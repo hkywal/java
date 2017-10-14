@@ -37,4 +37,10 @@ public class ContaCorrente {
 	public void setDesconto(double valor) {
 		this.saldo -= valor;
 	}
+	
+	private void setSa() {
+		// TODO Auto-generated method stub
+
+	}
+	
 }
