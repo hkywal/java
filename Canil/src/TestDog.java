@@ -14,14 +14,17 @@ public class TestDog {
 		Dog[] pets;
 		pets = new Dog[9];
 		
-		pets[2] = new Dog();
+		for (int y = 0; y < pets.length; y++) {
+			pets[y] = new Dog();
+		}
 		pets[2].setWeight(60.6);
+		pets[8].setBreed("Pastor");
 		aux = pets.length + "\n";
 		aux += "Memória: " + pets[2] + "\n";
-		aux += pets[2].getWeight();
+		aux += pets[2].getWeight() + "\n";
+		aux += pets[8].getWeight() + "\n";
 		
 		System.out.println(aux);
-		
 		
 	}
 	
