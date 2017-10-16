@@ -17,12 +17,15 @@ public class TestDog {
 		for (int y = 0; y < pets.length; y++) {
 			pets[y] = new Dog();
 		}
-		pets[2].setWeight(60.6);
+		pets[8].setWeight(60.6);
 		pets[8].setBreed("Pastor");
+		
 		aux = pets.length + "\n";
 		aux += "Memória: " + pets[2] + "\n";
 		aux += pets[2].getWeight() + "\n";
 		aux += pets[8].getWeight() + "\n";
+		aux += pets[8].getFoodQuantity() + "\n";
+
 		
 		System.out.println(aux);
 		

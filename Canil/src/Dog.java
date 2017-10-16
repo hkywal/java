@@ -19,5 +19,17 @@ public class Dog {
 		return this.weight;
 	}
 	
+	public String getFoodQuantity() {
+		String message;
+		if (this.weight >= 60.0) {
+			message = "Dar muita ração.";
+		} else if (this.weight > 30) {
+			message = "Dar média quantidade de ração.";
+		} else {
+			message = "Dar pouca ração.";
+		}
+		return message;
+	}
+	
 }
  
