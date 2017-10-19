@@ -4,18 +4,18 @@ public class TestDog {
 	public static void main(String[] args) {
 		
 		String aux = "";
-		Dog dog1 = new Dog();
+		Fila dog1 = new Fila();
 		
 		dog1.setBreed("Fila");
 		dog1.setWeight(60.3);
 		dog1.getBreed();
 		dog1.getWeight();
 		
-		Dog[] pets;
-		pets = new Dog[9];
+		Fila[] pets;
+		pets = new Fila[9];
 		
 		for (int y = 0; y < pets.length; y++) {
-			pets[y] = new Dog();
+			pets[y] = new Fila();
 		}
 		pets[8].setWeight(60.6);
 		pets[8].setBreed("Pastor");
@@ -28,6 +28,9 @@ public class TestDog {
 
 		
 		System.out.println(aux);
+		
+		
+		
 		
 	}
 	

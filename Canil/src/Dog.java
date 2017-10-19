@@ -1,7 +1,7 @@
 
-public class Dog {
+abstract class Dog {
 	private String breed;
-	private double weight;
+	protected double weight;
 	
 	public void setBreed(String breed) {
 		this.breed = breed;
@@ -15,9 +15,7 @@ public class Dog {
 		this.weight = weight;
 	}
 	
-	public double getWeight() {
-		return this.weight;
-	}
+	public abstract double getWeight();
 	
 	public String getFoodQuantity() {
 		String message;
