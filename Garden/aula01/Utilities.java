@@ -1,6 +1,6 @@
 package aula01;
 
-class Utils {
+public class Utilities {
 
 	public static String testPlural(String text, int numberOf) {
 		String strAux = text;

@@ -7,8 +7,8 @@ class MyGarden {
 	public static void main(String args[]) {
 		int numberOfPlants = 0;
 		
+		Utilities utils = new Utilities();		
 		Scanner scanner = new Scanner(System.in);
-		Utils utils = new Utils();		
 
 		String labelPlural = "s";
 		if (numberOfPlants < 2) {
@@ -30,7 +30,18 @@ class MyGarden {
 		} else {
 			System.out.println("Não é um número");
 		}
+		
+		System.out.println("\nInforme o número de rosas:");
+		txtScanner = scanner.next();
+		int firstValue = Integer.parseInt(txtScanner);
+
+		System.out.println("\nInforme o número da divisão:");
+		txtScanner = scanner.next();
+		int secondValue = Integer.parseInt(txtScanner);
+		
+		System.out.println("Oresultado da divisão é " + (firstValue/secondValue));
 		scanner.close();
+
 	}
 
 }
