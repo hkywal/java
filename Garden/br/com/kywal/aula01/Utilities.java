@@ -1,4 +1,4 @@
-package aula01;
+package br.com.kywal.aula01;
 
 public class Utilities {
 
