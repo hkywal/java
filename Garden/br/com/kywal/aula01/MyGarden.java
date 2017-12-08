@@ -1,11 +1,33 @@
 package br.com.kywal.aula01;
 
+import br.com.kywal.utils.Utilities;
 import java.util.Scanner;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Locale;
+import java.time.format.DateTimeFormatter;
 
 class MyGarden {
 
 	public static void main(String args[]) {
 		int numberOfPlants = 0;
+
+		Date data = new Date();
+		LocalDateTime locDate = LocalDateTime.now();
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		String text = locDate.format(formatter);
+		LocalDateTime parseDate = LocalDateTime.parse(text, formatter);
+
+		Locale ptBr = new Locale("pt", "BR");
+		Locale vmLocale = Locale.getDefault();
+
+		System.out.println("A data é " + data);
+		System.out.println("A locDate é " + locDate);
+		//System.out.println("Dia da semana " + locDate.getDayOfWeek);
+		System.out.println("vmLocale " + ptBr);
+		System.out.println("text " + text);
 		
 		Utilities utils = new Utilities();		
 		Scanner scanner = new Scanner(System.in);
