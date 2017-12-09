@@ -30,4 +30,7 @@ public class Plant {
 		return this.specie;
 	}
 
+	public String getSpecieName() {
+		return this.specie.getName();
+	}
 }

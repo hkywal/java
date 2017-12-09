@@ -1,0 +1,33 @@
+apply plugin: 'java'
+
+10.times {counter ->
+	task "task$counter" {
+		doLast {
+			println "I'm task number $counter"
+		}
+	}
+}		
+
+task loadfile {
+	doLast {
+		def files = file('br/com/kywal/garden/').listFiles()
+		files.each { File file ->
+			def newName = file.name.split("\\.")[1]
+			//ant.loadfile(srcFile: file, property: file.name)
+			if (newName == "java") {
+				println "*** $file.name - $newName"
+			}
+		}
+	}
+}
+
+task compile(type: JavaCompile){
+	source = fileTree(dir: '.', include: '**/*.java')
+	destinationDir = file('.')
+	classpath = sourceSets.main.compileClasspath
+}
+
+task copyTask(type: Copy) {
+    from 'teste1'
+    into 'teste'
+}

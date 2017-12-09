@@ -24,10 +24,10 @@ class MyGarden {
 		Locale vmLocale = Locale.getDefault();
 
 		System.out.println("A data é " + data);
-		System.out.println("A locDate é " + locDate);
+		//System.out.println("A locDate é " + locDate);
 		//System.out.println("Dia da semana " + locDate.getDayOfWeek);
-		System.out.println("vmLocale " + ptBr);
-		System.out.println("text " + text);
+		//System.out.println("vmLocale " + ptBr);
+		//System.out.println("text " + text);
 		
 		Utilities utils = new Utilities();	
 
@@ -55,8 +55,22 @@ class MyGarden {
 
 		System.out.println("O nome da planta é " + pt.getName() + " e seu código é " + pt.getCode() + " e sua espécie é " + pt.getSpecie().getName());
 
-		
+		Plant pt2 = new Plant();
+		pt2.setName("Lucky");
+		pt2.setCode("PT2-001");
+		pt2.setSpecie(bamboo);
 
+
+		//System.out.println("Vou criar uma \"subespécie\":");
+
+		SubSpecie sb = new SubSpecie();
+		sb.setName("Sub Bamboo");
+
+		//System.out.println("Subespécie \"" + sb.getName() + "\" criada.\"" );
+		
+		bamboo.setSubSpecie(sb);
+
+		System.out.println("A espécie de " + pt2.getName() + " é a " + pt2.getSpecieName() + " e a subespécie é " + pt2.getSpecie().getSubSpecieName() + ".");
 
 
 		// if (utils.isNumeric(txtScanner)) {
