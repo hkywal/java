@@ -9,6 +9,4 @@ public class CreateMatrix {
 	public int getNumberOfRows() {
 		return this.numberOfRows;
 	}
-
-
 }
