@@ -55,9 +55,9 @@ public class CreateMatrix2D {
 	}
 
 	public String plotMatrix() {
-		String strPlotAux = "*---------------*\n";
+		String strPlotAux = this.graphicLine(this.numberOfColumnsAndRows) + "\n";
 		for (int x = 0; x < this.numberOfColumnsAndRows; x++) {
-			strPlotAux += "  ";
+			strPlotAux += "   ";
 
 			for (int y = 0; y < this.numberOfColumnsAndRows; y++) {
 				strPlotAux += + this.arrMatrix[x][y] + "   ";
@@ -65,7 +65,7 @@ public class CreateMatrix2D {
 			strPlotAux += "\n";
 
 		}
-		strPlotAux += "*---------------*\n";
+		strPlotAux += this.graphicLine(this.numberOfColumnsAndRows) + "\n";
 
 		return(strPlotAux);
 	}
@@ -200,6 +200,14 @@ public class CreateMatrix2D {
 
 	public String showS(int value) {
 		return (value > 1) ? "s" : "";
+	}
+
+	public String graphicLine(int size) {
+		String plot = "*";
+		for (int x = 0; x < size; x++) {
+			plot += "----";
+		}
+		return plot + "*";
 	}
 
 }
