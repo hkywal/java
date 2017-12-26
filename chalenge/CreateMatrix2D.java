@@ -102,7 +102,7 @@ public class CreateMatrix2D {
 		for (int line = 0; line < this.numberOfColumnsAndRows; line++) {
 			for (int column = 0; column < this.numberOfColumnsAndRows; column++) {
 				if (arrMatrix[line][column] == 1) {
-					message += (column + 1) + ", " + (line + 1) + ").\n";
+					message += (column + 1) + "," + (line + 1) + ").\n";
 					this.heroCoordinateX = line; 
 					this.heroCoordinateY = column; 
 					line = 999; 
@@ -122,18 +122,16 @@ public class CreateMatrix2D {
 			for (int column = 0; column < this.numberOfColumnsAndRows; column++) {
 				if (arrMatrix[line][column] == 2) {
 					if (enemiesCounter == 0) {
-						message += (column + 1) + ", " + (line + 1) + ").\n";
+						int howManyStepsValue = howManySteps(line, column, this.heroCoordinateX, this.heroCoordinateY);
+						message += (column + 1) + "," + (line + 1) + ").\n";
 						
 						message += "     O inimigo está " + leftOrRight ((column+1), (this.heroCoordinateY+1)) + " e " +  upOrDown ((line+1), (this.heroCoordinateX+1))  + "\n";
-						message += "     O herói andará " + howManySteps (line, column, this.heroCoordinateX, this.heroCoordinateY) + " territórios para alcançá-lo.\n";
-						
-
+						message += "     O herói andará " + howManyStepsValue + " território" + this.showS(howManyStepsValue) + " para alcançá-lo.\n";
+					
 						message += "     Se for por outra dimensão o herói andará " + howManyStepsInOtherDimension (column + 1, this.heroCoordinateY + 1, line + 1, this.heroCoordinateX + 1) + " territórios para alcançá-lo.\n\n";
-						
-
 
 					} else {
-						message += "  -> O segundo está nas coordenadas de Linha:" + (line + 1) + " e Coluna:" + (column + 1) + ".\n";
+						message += "  -> O segundo inimigo está nas coordenadas (" + (line + 1) + "," + (column + 1) + ").\n";
 						line = 999;
 						column = 999;
 					}
@@ -145,34 +143,37 @@ public class CreateMatrix2D {
 		return message;
 	}
 
-	public String howManySteps(int enemieX, int enemieY, int heroX, int heroY) {
+	public int howManySteps(int enemieX, int enemieY, int heroX, int heroY) {
 		int horizontal = Math.abs(enemieX - heroX);
 		int vertical = Math.abs(enemieY - heroY);
-		return "" + (horizontal + vertical);
+		return horizontal + vertical;
 	}
 
 	public String howManyStepsInOtherDimension(int x1, int x2, int y1, int y2) {
-		System.out.println("x1:" + x1 + " x2:" + x2 + " y1:" + y1 + " y2:" + y2);
-		int result = Math.abs(this.numberOfColumnsAndRows - Math.abs(x1 - x2) + Math.abs(y1 - y2));
+		int possibility0 = Math.abs(this.numberOfColumnsAndRows - Math.abs(x1 - x2) + Math.abs(y1 - y2));
+		int possibility1 = Math.abs(Math.abs(x1 - x2) + Math.abs((y1 + this.numberOfColumnsAndRows) - y2));
+		int possibility2 = Math.abs(Math.abs((x1 + this.numberOfColumnsAndRows) - x2) + Math.abs(y1 - y2));
+
 		if (x1 == x2) {
-			result = Math.abs(this.numberOfColumnsAndRows - Math.abs(x1 - x2) - Math.abs(y1 - y2));
+			possibility0 = Math.abs(this.numberOfColumnsAndRows - Math.abs(y1 - y2));
 		}
-		return "" + result;
+		if (y1 == y2) {
+			possibility0 = Math.abs(this.numberOfColumnsAndRows - Math.abs(x1 - x2));
+		}
+
+		possibility0 = Math.min(possibility0, possibility1);
+		possibility0 = Math.min(possibility0, possibility2);
+		return "" + possibility0;
 	}
 
 	public String leftOrRight(int enemieX, int heroX) {
 		String position = "";
-		String strS = "s";
 		int numberOfPositions =  Math.abs(enemieX - heroX); 
 
-		if (numberOfPositions == 1) {
-			strS = "";
-		} 
-
 		if (enemieX > heroX) {
-			position = numberOfPositions + " coluna" + strS + " à direita";
+			position = numberOfPositions + " coluna" + this.showS(numberOfPositions) + " à direita";
 		} else {
-			position = numberOfPositions + " coluna" + strS + " à esquerda";
+			position = numberOfPositions + " coluna" + this.showS(numberOfPositions) + " à esquerda";
 		}
 		if (enemieX == heroX) {
 			position = "na mesma coluna";
@@ -183,17 +184,12 @@ public class CreateMatrix2D {
 
 	public String upOrDown(int enemieY, int heroY) {
 		String position = "";
-		String strS = "s";
 		int numberOfPositions =  Math.abs(enemieY - heroY); 
 
-		if (numberOfPositions == 1) {
-			strS = "";
-		} 
-
 		if (enemieY < heroY) {
-			position = numberOfPositions + " linha" + strS + " acima";
+			position = numberOfPositions + " linha" + this.showS(numberOfPositions) + " acima";
 		} else {
-			position = numberOfPositions + " linha" + strS + " abaixo";
+			position = numberOfPositions + " linha" + this.showS(numberOfPositions) + " abaixo";
 		}
 		if (enemieY == heroY) {
 			position = "na mesma linha";
@@ -202,5 +198,8 @@ public class CreateMatrix2D {
 		return position + ".";
 	}
 
+	public String showS(int value) {
+		return (value > 1) ? "s" : "";
+	}
 
 }
